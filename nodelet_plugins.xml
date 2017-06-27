@@ -1,0 +1,11 @@
+<library path="lib/libyoubot_base_driver_nodelets">
+
+  <class name="youbot_base_driver/YoubotBaseDriver"
+         type="youbot_base_driver::YoubotBaseDriverNodelet"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Youbot Base Driver Nodelet
+    </description>
+  </class>
+
+</library>

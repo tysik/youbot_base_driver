@@ -1,0 +1,21 @@
+<!-- -->
+<launch>
+
+  <arg name="manager" doc="Name of the nodelet manager"/>
+  <arg name="machine" doc="Name of the machine on which the nodes should be started"/>
+
+  <node pkg="nodelet" type="nodelet" name="youbot_base_driver" args="load youbot_base_driver/YoubotBaseDriver $(arg manager)" machine="$(arg machine)">
+    <param name="publish_tf"       value="true"/>
+
+    <param name="loop_rate"        value="100.0"/>
+
+    <param name="parent_frame_id"  value="odom"/>
+    <param name="child_frame_id"   value="odom_robot"/>
+
+    <!--<param name="config_file_path"   value="$(find youbot_driver)/config"/>-->
+    <param name="config_file_path" value="/home/youbot/robor_ws/src/youbot_driver/config"/>
+    <param name="config_file_name" value="youbot-base"/>
+  </node>
+
+</launch>
+<!-- -->
