@@ -20,6 +20,6 @@ The node handles communication with internal youBot drivers.
 - `config_file_name` (`string`, default: `youbot-base`) - name of the base config file without extension.
 
 ### Issues
-- The nodelet version of the driver (youbot_base_driver/YoubotBaseDriver) does not currently work. Use standard node instead.
 - After compilation the executable needs access to the ethernet. Use: `sudo setcap cap_net_raw+ep <path_to_executable_folder>/youbot_base_driver_node`
+- The nodelet version of the driver (youbot_base_driver/YoubotBaseDriver) does not currently work due to the fact that the nodelet manager would need the access to the ethernet. Use standard node instead.
 
