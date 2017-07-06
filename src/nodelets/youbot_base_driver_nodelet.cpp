@@ -46,7 +46,7 @@ class YoubotBaseDriverNodelet : public nodelet::Nodelet
 public:
   virtual void onInit() {
     NODELET_INFO("Initializing Youbot Base Driver Nodelet");
-    ros::NodeHandle nh = getMTNodeHandle();
+    ros::NodeHandle nh = getNodeHandle();
     ros::NodeHandle nh_local = getPrivateNodeHandle();
 
     try {
