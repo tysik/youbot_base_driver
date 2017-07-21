@@ -43,11 +43,15 @@ int main(int argc, char** argv) {
   ros::NodeHandle nh_local("~");
 
   try {
+    ROS_INFO("[Youbot Base Driver]: Initializing node");
     YoubotBaseDriver ybd(nh, nh_local);
     ros::spin();
   }
-  catch (std::string s) {
-    ROS_ERROR_STREAM(s);
+  catch (const char* s) {
+    ROS_FATAL_STREAM("[Youbot Base Driver]: " << s);
+  }
+  catch (...) {
+    ROS_FATAL_STREAM("[Youbot Base Driver]: Unexpected error");
   }
 
   return 0;

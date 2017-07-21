@@ -80,6 +80,13 @@ YoubotBaseDriver::~YoubotBaseDriver() {
   controls_sub_.shutdown();
   odom_pub_.shutdown();
 
+  nh_local_.deleteParam("publish_tf");
+  nh_local_.deleteParam("loop_rate");
+  nh_local_.deleteParam("parent_frame_id");
+  nh_local_.deleteParam("child_frame_id");
+  nh_local_.deleteParam("config_file_path");
+  nh_local_.deleteParam("config_file_name");
+
   youbot::EthercatMaster::destroy();
 }
 
@@ -96,7 +103,7 @@ void YoubotBaseDriver::controlsCallback(const geometry_msgs::Twist::ConstPtr con
     youbot_base_->setBaseVelocity(u, v, w);
   }
   catch (std::exception& e) {
-    ROS_ERROR_STREAM(e.what());
+    throw e.what();
   }
 }
 
@@ -159,10 +166,7 @@ void YoubotBaseDriver::timerCallback(const ros::TimerEvent& e) {
 
     youbot::EthercatMaster::getInstance().AutomaticReceiveOn(true);
   }
-  catch (youbot::EtherCATConnectionException& e) {
-    ROS_ERROR_STREAM(e.what());
-  }
   catch (std::exception& e)	{
-    ROS_ERROR_STREAM(e.what());
+    throw e.what();
   }
 }
